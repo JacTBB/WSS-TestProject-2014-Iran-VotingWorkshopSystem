@@ -1,10 +1,10 @@
 package com.example.votingworkshopapp
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.votingworkshopapp.Models.LoginRequest
+import com.example.votingworkshopapp.Utilities.AccountService
 import com.example.votingworkshopapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -12,14 +12,28 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
+        binding.loginBtn.setOnClickListener(View.OnClickListener {
+            val loginRequest = LoginRequest()
+            loginRequest.Username = binding.username.toString()
+            loginRequest.Password = binding.password.toString()
+            AccountService.Login(this, loginRequest).execute()
+        })
+    }
+
+    public fun onLoginTrying() {
+        binding.loginBtn.text = "Logging in..."
+    }
+
+    public fun onLoginCompleted() {
+        binding.loginBtn.text = "Logged in!"
+    }
+
+    public fun onLoginError() {
+        binding.loginBtn.text = "Login Error!"
     }
 }

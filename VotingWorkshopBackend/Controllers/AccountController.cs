@@ -13,6 +13,7 @@ namespace VotingWorkshopBackend.Controllers
         [HttpPost("login")]
         public IActionResult Post([FromBody] LoginRequest loginRequest)
         {
+            Console.WriteLine("LoginRequest");
             User? user = dbContxext.Users.FirstOrDefault(u => u.Username == loginRequest.Username && u.Password == loginRequest.Password);
 
             if (user == null)
