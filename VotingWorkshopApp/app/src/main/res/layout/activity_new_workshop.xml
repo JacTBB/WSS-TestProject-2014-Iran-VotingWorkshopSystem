@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <Spinner
+        android:id="@+id/saloon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:id="@+id/timeslot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown" />
+
+    <Button
+        android:id="@+id/datePickerBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="SELECT DATE:"
+        android:textColor="@color/black"
+        style="?android:spinnerStyle" />
+
+    <Button
+        android:id="@+id/requestWorkshopBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Request Workshop" />
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.votingworkshopapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -25,8 +26,8 @@ class MainActivity : AppCompatActivity() {
         })
 
         binding.newWorkshopBtn.setOnClickListener(View.OnClickListener {
-//            var intent = Intent(this, ShopActivity::class.java)
-//            startActivity(intent)
+            var intent = Intent(this, NewWorkshopActivity::class.java)
+            startActivity(intent)
         })
     }
 
