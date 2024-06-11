@@ -5,31 +5,37 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Voting and Workshop Management System!" />
-    
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username" />
+        android:background="#CCF9FD"
+        android:padding="10dp"
+        android:text="Voting and Workshop Management System"
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Login" />
+        <TextView
+            android:id="@+id/welcomeMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="Please login:" />
+
+        <Button
+            android:id="@+id/loginLogoutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="Login" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/newWorkshopBtn"

@@ -14,36 +14,22 @@
         android:layout_height="wrap_content"
         android:text="Back" />
 
-    <Spinner
-        android:id="@+id/saloon"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown" />
-
-    <Spinner
-        android:id="@+id/category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown" />
-
-    <Spinner
-        android:id="@+id/timeslot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown" />
-
-    <Button
-        android:id="@+id/datePickerBtn"
+    <EditText
+        android:id="@+id/username"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="SELECT DATE:"
-        android:textColor="@color/black"
-        style="?android:spinnerStyle" />
+        android:hint="Username" />
 
-    <Button
-        android:id="@+id/requestWorkshopBtn"
+    <EditText
+        android:id="@+id/password"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Request Workshop" />
+        android:hint="Password" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Login" />
 
 </LinearLayout>

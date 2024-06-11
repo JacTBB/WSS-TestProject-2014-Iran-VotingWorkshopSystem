@@ -3,10 +3,12 @@ package com.example.votingworkshopapp
 import android.R
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
+import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.votingworkshopapp.Models.WorkshopRequest
 import com.example.votingworkshopapp.Utilities.WorkshopService
@@ -37,6 +39,11 @@ class NewWorkshopActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.backBtn.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         WorkshopService.GetWorkshopOptions(this).execute()
 
         setupDatePicker()
@@ -47,6 +54,9 @@ class NewWorkshopActivity : AppCompatActivity() {
         binding.requestWorkshopBtn.setOnClickListener {
             val sp = PreferenceManager.getDefaultSharedPreferences(applicationContext)
             val userJSONString = sp.getString("user", null)
+            if (userJSONString == null) {
+                return@setOnClickListener Toast.makeText(this,"Invalid User", Toast.LENGTH_SHORT).show()
+            }
             val userJSON = JSONArray(userJSONString).getJSONObject(0)
             val userId = userJSON["userId"]
             val statusId = 3 // Pending
@@ -75,6 +85,22 @@ class NewWorkshopActivity : AppCompatActivity() {
                 if ("$item1 - $item2" == binding.timeslot.selectedItem.toString()) {
                     workshopTimeslotId = jsonObject.getInt("workshopTimeslotId")
                 }
+            }
+
+            if (userId == 0) {
+                return@setOnClickListener Toast.makeText(this,"Invalid User", Toast.LENGTH_SHORT).show()
+            }
+            if (saloonId == 0) {
+                return@setOnClickListener Toast.makeText(this,"Invalid Saloon", Toast.LENGTH_SHORT).show()
+            }
+            if (categoryId == 0) {
+                return@setOnClickListener Toast.makeText(this,"Invalid Category", Toast.LENGTH_SHORT).show()
+            }
+            if (workshopTimeslotId == 0) {
+                return@setOnClickListener Toast.makeText(this,"Invalid Timeslot", Toast.LENGTH_SHORT).show()
+            }
+            if (selectedDate == null) {
+                return@setOnClickListener Toast.makeText(this,"Invalid Date", Toast.LENGTH_SHORT).show()
             }
 
             Log.d("Workshop Request", userId.toString());
@@ -158,14 +184,21 @@ class NewWorkshopActivity : AppCompatActivity() {
     }
 
     public fun onRequestWorkshopTrying() {
+        binding.requestWorkshopBtn.isEnabled = false
         binding.requestWorkshopBtn.text = "Sending..."
     }
 
     public fun onRequestWorkshopCompleted() {
-        binding.requestWorkshopBtn.text = "Success!"
+        binding.requestWorkshopBtn.isEnabled = true
+        binding.requestWorkshopBtn.text = "Request Workshop"
+        Toast.makeText(this,"Workshop Request Successfull", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     public fun onRequestWorkshopError() {
-        binding.requestWorkshopBtn.text = "Error!"
+        binding.requestWorkshopBtn.isEnabled = true
+        binding.requestWorkshopBtn.text = "Request Workshop"
+        Toast.makeText(this,"Error requesting new workshop", Toast.LENGTH_SHORT).show()
     }
 }
