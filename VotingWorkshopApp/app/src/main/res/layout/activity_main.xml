@@ -31,4 +31,10 @@
         android:layout_height="wrap_content"
         android:text="Login" />
 
+    <Button
+        android:id="@+id/newWorkshopBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="New Workshop" />
+
 </LinearLayout>

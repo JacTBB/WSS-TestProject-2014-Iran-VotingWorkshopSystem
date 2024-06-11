@@ -19,9 +19,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.loginBtn.setOnClickListener(View.OnClickListener {
             val loginRequest = LoginRequest()
-            loginRequest.Username = binding.username.toString()
-            loginRequest.Password = binding.password.toString()
+            loginRequest.Username = binding.username.text.toString()
+            loginRequest.Password = binding.password.text.toString()
             AccountService.Login(this, loginRequest).execute()
+        })
+
+        binding.newWorkshopBtn.setOnClickListener(View.OnClickListener {
+//            var intent = Intent(this, ShopActivity::class.java)
+//            startActivity(intent)
         })
     }
 
