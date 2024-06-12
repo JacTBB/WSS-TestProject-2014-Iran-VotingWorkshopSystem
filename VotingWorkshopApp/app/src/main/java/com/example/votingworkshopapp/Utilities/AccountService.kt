@@ -3,7 +3,9 @@ package com.example.votingworkshopapp.Utilities
 import android.os.AsyncTask
 import android.preference.PreferenceManager
 import android.util.Log
+import com.example.votingworkshopapp.ExhibitorHomeActivity
 import com.example.votingworkshopapp.LoginActivity
+import com.example.votingworkshopapp.MainActivity
 import com.example.votingworkshopapp.Models.LoginRequest
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -57,6 +59,39 @@ class AccountService {
             else
             {
                 context.onLoginError();
+            }
+        }
+    }
+
+    class GetNotifications(private var context: MainActivity) : AsyncTask<Void, Void, Boolean>() {
+        private var workshopsJSONString = "";
+
+        override fun doInBackground(vararg params: Void?): Boolean {
+            val url = URL("http://10.0.2.2:5063/api/workshop")
+            val con: HttpURLConnection = url.openConnection() as HttpURLConnection
+            con.setRequestProperty("Accept", "application/json");
+            Log.d("Http Service Tag-post", "response code " + con.responseCode);
+
+            if (con.responseCode == 200) {
+                val reader = BufferedReader(InputStreamReader(con.inputStream))
+                val result = reader.readLines().joinToString()
+                Log.d("Http Service Tag-post", "HTTP result: $result")
+
+                workshopsJSONString = result
+            }
+
+            con.disconnect();
+            return con.responseCode == 200
+        }
+
+        override fun onPreExecute() {
+            super.onPreExecute()
+        }
+
+        override fun onPostExecute(result: Boolean) {
+            super.onPostExecute(result)
+            if (result) {
+                context.displayNotifications(workshopsJSONString)
             }
         }
     }

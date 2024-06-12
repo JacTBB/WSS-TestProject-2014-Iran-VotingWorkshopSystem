@@ -2,6 +2,9 @@ package com.example.votingworkshopapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,10 +23,9 @@ class LoginActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.backBtn.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+        setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar?.title = "Login"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.loginBtn.setOnClickListener(View.OnClickListener {
             val loginRequest = LoginRequest()
@@ -31,6 +33,22 @@ class LoginActivity : AppCompatActivity() {
             loginRequest.Password = binding.password.text.toString()
             AccountService.Login(this, loginRequest).execute()
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        MenuInflater(this).inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     public fun onLoginTrying() {

@@ -27,13 +27,15 @@ namespace VotingWorkshopBackend.Controllers
                 WorkshopView wv = new WorkshopView()
                 {
                     WorkshopRequestId = w.WorkshopRequestId,
+                    UserId = w.UserId,
                     User = w.User.Username,
                     Saloon = w.Saloon.SaloonName,
                     Category = w.Category.CategoryName,
                     TimeslotStart = w.WorkshopTimeslot.StartTime.ToString(),
                     TimeslotEnd = w.WorkshopTimeslot.EndTime.ToString(),
                     Status = w.Status.StatusName,
-                    Date = w.Date
+                    Date = w.Date,
+                    LastUpdated = w.LastUpdated
                 };
                 workshopsView[i] = wv;
                 i++;

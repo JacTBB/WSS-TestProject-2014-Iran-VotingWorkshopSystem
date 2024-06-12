@@ -19,6 +19,8 @@ public partial class WorkshopRequest
 
     public DateTime Date { get; set; }
 
+    public DateTime LastUpdated { get; set; }
+
     public virtual Category Category { get; set; } = null!;
 
     public virtual Saloon Saloon { get; set; } = null!;
