@@ -26,10 +26,10 @@ class MainActivity : AppCompatActivity() {
             val username = userJSON["username"]
             binding.welcomeMessage.text = "Welcome $username"
             binding.loginLogoutBtn.text = "Logout"
-            binding.newWorkshopBtn.isEnabled = true
+            binding.exhibitorHomeBtn.isEnabled = true
         }
         else {
-            binding.newWorkshopBtn.isEnabled = false
+            binding.exhibitorHomeBtn.isEnabled = false
         }
 
         binding.loginLogoutBtn.setOnClickListener(View.OnClickListener {
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 sp.edit().remove("user").apply()
                 binding.welcomeMessage.text = "Please login:"
                 binding.loginLogoutBtn.text = "Login"
-                binding.newWorkshopBtn.isEnabled = false
+                binding.exhibitorHomeBtn.isEnabled = false
             }
             else {
                 var intent = Intent(this, LoginActivity::class.java)
@@ -45,8 +45,8 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        binding.newWorkshopBtn.setOnClickListener(View.OnClickListener {
-            var intent = Intent(this, NewWorkshopActivity::class.java)
+        binding.exhibitorHomeBtn.setOnClickListener(View.OnClickListener {
+            var intent = Intent(this, ExhibitorHomeActivity::class.java)
             startActivity(intent)
         })
     }

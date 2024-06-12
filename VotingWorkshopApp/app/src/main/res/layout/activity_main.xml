@@ -38,9 +38,9 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/newWorkshopBtn"
+        android:id="@+id/exhibitorHomeBtn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="New Workshop" />
+        android:text="Exhibitor Dashboard" />
 
 </LinearLayout>

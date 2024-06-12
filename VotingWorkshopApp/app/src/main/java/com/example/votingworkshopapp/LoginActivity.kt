@@ -42,6 +42,8 @@ class LoginActivity : AppCompatActivity() {
         binding.loginBtn.isEnabled = true
         binding.loginBtn.text = "Login"
         Toast.makeText(this,"Logged in successfully", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     public fun onLoginError() {

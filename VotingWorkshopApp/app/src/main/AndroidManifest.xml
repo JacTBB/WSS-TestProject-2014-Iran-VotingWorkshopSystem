@@ -27,6 +27,7 @@
         </activity>
         <activity android:name=".NewWorkshopActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".ExhibitorHomeActivity" />
     </application>
 
 </manifest>

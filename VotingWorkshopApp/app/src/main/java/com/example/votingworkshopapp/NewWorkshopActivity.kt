@@ -40,7 +40,7 @@ class NewWorkshopActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.backBtn.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, ExhibitorHomeActivity::class.java)
             startActivity(intent)
         }
 
