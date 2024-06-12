@@ -67,7 +67,8 @@ namespace VotingWorkshopBackend.Controllers
                 CategoryId = workshopRequestFormat.CategoryId,
                 WorkshopTimeslotId = workshopRequestFormat.WorkshopTimeslotId,
                 StatusId = workshopRequestFormat.StatusId,
-                Date = workshopRequestFormat.Date
+                Date = workshopRequestFormat.Date,
+                LastUpdated = DateTime.UtcNow
             };
             dbContxext.WorkshopRequests.Add(workshopRequest);
             dbContxext.SaveChanges();

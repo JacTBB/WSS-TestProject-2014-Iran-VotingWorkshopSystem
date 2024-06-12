@@ -124,7 +124,7 @@ class NewWorkshopActivity : AppCompatActivity() {
 
     private fun setupDatePicker() {
         val dateSetListener = OnDateSetListener { datePicker, year, month, day ->
-            selectedDate = Date(year, month, day)
+            selectedDate = Date(year - 1900, month, day)
             binding.datePickerBtn.text = "Selected Date: $day/${month + 1}/$year"
         }
 
