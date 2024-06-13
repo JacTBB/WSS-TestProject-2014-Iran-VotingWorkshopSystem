@@ -7,6 +7,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -39,10 +42,9 @@ class NewWorkshopActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.backBtn.setOnClickListener{
-            val intent = Intent(this, ExhibitorHomeActivity::class.java)
-            startActivity(intent)
-        }
+        setSupportActionBar(findViewById(com.example.votingworkshopapp.R.id.toolbar))
+        supportActionBar?.title = "New Workshop Request"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         WorkshopService.GetWorkshopOptions(this).execute()
 
@@ -119,6 +121,22 @@ class NewWorkshopActivity : AppCompatActivity() {
             workshopRequest.Date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US).format(selectedDate)
 
             WorkshopService.RequestNewWorkshop(this, workshopRequest).execute()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        MenuInflater(this).inflate(com.example.votingworkshopapp.R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

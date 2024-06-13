@@ -41,7 +41,7 @@ class ExhibitorHomeActivity : AppCompatActivity() {
         setContentView(view)
 
         setSupportActionBar(findViewById(R.id.toolbar))
-        supportActionBar?.title = "Login"
+        supportActionBar?.title = "Exhibitor Dashboard"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         workshopRecyclerView = binding.workshopRecyclerView
