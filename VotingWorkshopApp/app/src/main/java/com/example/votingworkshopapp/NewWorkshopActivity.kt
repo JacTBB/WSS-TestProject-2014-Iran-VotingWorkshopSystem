@@ -45,6 +45,7 @@ class NewWorkshopActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(com.example.votingworkshopapp.R.id.toolbar))
         supportActionBar?.title = "New Workshop Request"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(com.example.votingworkshopapp.R.drawable.back)
 
         WorkshopService.GetWorkshopOptions(this).execute()
 

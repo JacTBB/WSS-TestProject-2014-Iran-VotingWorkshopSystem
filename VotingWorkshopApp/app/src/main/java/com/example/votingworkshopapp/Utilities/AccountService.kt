@@ -6,6 +6,7 @@ import android.util.Log
 import com.example.votingworkshopapp.ExhibitorHomeActivity
 import com.example.votingworkshopapp.LoginActivity
 import com.example.votingworkshopapp.MainActivity
+import com.example.votingworkshopapp.Models.ExhibitorWorkshop
 import com.example.votingworkshopapp.Models.LoginRequest
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -63,7 +64,7 @@ class AccountService {
         }
     }
 
-    class GetNotifications(private var context: MainActivity) : AsyncTask<Void, Void, Boolean>() {
+    class GetNotifications(private var context: ExhibitorHomeActivity) : AsyncTask<Void, Void, Boolean>() {
         private var workshopsJSONString = "";
 
         override fun doInBackground(vararg params: Void?): Boolean {

@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.votingworkshopapp.Models.ExhibitorWorkshop
+import com.example.votingworkshopapp.Models.Notification
+import com.example.votingworkshopapp.Utilities.AccountService
 import com.example.votingworkshopapp.Utilities.WorkshopService
 import com.example.votingworkshopapp.databinding.ActivityExhibitorHomeBinding
 import org.json.JSONArray
@@ -27,6 +29,10 @@ import java.util.Date
 
 class ExhibitorHomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityExhibitorHomeBinding
+
+    private lateinit var notificationRecyclerView: RecyclerView
+    private lateinit var notificationAdapter: NotificationAdapter
+    private val notificationList = mutableListOf<Notification>()
 
     private lateinit var workshopRecyclerView: RecyclerView
     private lateinit var workshopAdapter: ExhibitorWorkshopAdapter
@@ -43,6 +49,13 @@ class ExhibitorHomeActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.title = "Exhibitor Dashboard"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
+
+        notificationRecyclerView = binding.notificationRecyclerView
+        notificationRecyclerView.layoutManager = LinearLayoutManager(this)
+        notificationAdapter = NotificationAdapter(notificationList)
+        notificationRecyclerView.adapter = notificationAdapter
+        AccountService.GetNotifications(this).execute()
 
         workshopRecyclerView = binding.workshopRecyclerView
         workshopRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -70,6 +83,63 @@ class ExhibitorHomeActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    fun displayNotifications(workshopsJSONString: String) {
+        val workshops = JSONArray(workshopsJSONString)
+        val notificationList = mutableListOf<Notification>()
+
+        val sp = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+        val userJSONString = sp.getString("user", null)
+        val lastNotification = sp.getString("notification", LocalDateTime.now().toString())
+        var userId = "0"
+        if (sp.getString("user", null) != null) {
+            val userJSON = JSONArray(userJSONString).getJSONObject(0)
+            userId = userJSON["userId"].toString()
+        }
+
+        for (i in 0 until workshops.length()) {
+            val jsonObject = workshops.getJSONObject(i)
+            Log.d("Exhibitor Workshop", "Result: $jsonObject")
+            val notification = Notification(
+                "Date: ${LocalDateTime.parse(jsonObject.getString("lastUpdated")).format(
+                    DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))}",
+                "Your request (${jsonObject.getString("saloon")}) is now: ${jsonObject.getString("status")}"
+            )
+            if (jsonObject.getString("userId") == userId) {
+                if (LocalDateTime.parse(jsonObject.getString("lastUpdated")) > LocalDateTime.parse(lastNotification)) {
+                    notificationList.add(notification)
+                }
+            }
+        }
+
+        notificationList.sortBy { it.date }
+
+        this.notificationList.addAll(notificationList)
+        notificationAdapter.notifyDataSetChanged()
+
+        sp.edit().putString("notification", LocalDateTime.now().toString()).apply()
+    }
+
+    class NotificationAdapter(private val list: List<Notification>) : RecyclerView.Adapter<NotificationAdapter.UserViewHolder>() {
+
+        class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            val Date: TextView = itemView.findViewById(R.id.date)
+            val Message: TextView = itemView.findViewById(R.id.message)
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
+            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.notification_row, parent, false)
+            return UserViewHolder(itemView)
+        }
+
+        override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+            val currentItem = list[position]
+            holder.Date.text = currentItem.date
+            holder.Message.text = currentItem.message
+        }
+
+        override fun getItemCount() = list.size
     }
 
     fun displayMyWorkshops(workshopsJSONString: String) {

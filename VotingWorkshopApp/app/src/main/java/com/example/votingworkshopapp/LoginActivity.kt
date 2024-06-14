@@ -26,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.title = "Login"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
 
         binding.loginBtn.setOnClickListener(View.OnClickListener {
             val loginRequest = LoginRequest()
@@ -60,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
         binding.loginBtn.isEnabled = true
         binding.loginBtn.text = "Login"
         Toast.makeText(this,"Logged in successfully", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, ExhibitorHomeActivity::class.java)
         startActivity(intent)
     }
 

@@ -6,20 +6,13 @@
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="ID"
-        android:visibility="gone" />
-
-    <TextView
         android:id="@+id/saloon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:drawableRight="@android:drawable/dark_header"
         android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:text="Saloon" />
 
     <TextView
@@ -29,16 +22,8 @@
         android:layout_weight="3"
         android:drawableRight="@android:drawable/dark_header"
         android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:text="Category" />
-
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
-        android:drawableRight="@android:drawable/dark_header"
-        android:paddingLeft="5dp"
-        android:text="Date" />
 
     <TextView
         android:id="@+id/timeslot"
@@ -46,5 +31,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="3"
         android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:text="Timeslot" />
 </LinearLayout>

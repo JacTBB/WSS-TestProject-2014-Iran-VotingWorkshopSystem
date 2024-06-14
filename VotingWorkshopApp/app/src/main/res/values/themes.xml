@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.VotingWorkshopApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="colorPrimary">#4488FF</item>
+         <item name="colorPrimary">#EF3340</item>
     </style>
 
     <style name="Theme.VotingWorkshopApp" parent="Base.Theme.VotingWorkshopApp" />
