@@ -1,6 +1,6 @@
 ﻿namespace VotingWorkshopManagement
 {
-    partial class Login
+    partial class LoginPage
     {
         /// <summary>
         /// Required designer variable.
@@ -95,15 +95,15 @@
             panel1.Size = new System.Drawing.Size(222, 268);
             panel1.TabIndex = 6;
             // 
-            // Login
+            // LoginPage
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(889, 562);
             Controls.Add(panel1);
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            Name = "Login";
-            Text = "Form1";
+            Name = "LoginPage";
+            Text = "VotingWorkshopManagement";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

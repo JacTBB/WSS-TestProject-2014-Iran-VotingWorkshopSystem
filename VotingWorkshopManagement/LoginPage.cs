@@ -11,10 +11,10 @@ using VotingWorkshopManagement.Models;
 
 namespace VotingWorkshopManagement
 {
-    public partial class Login : Form
+    public partial class LoginPage : Form
     {
         public VotingWorkshopSystemContext dbContext = new VotingWorkshopSystemContext();
-        public Login()
+        public LoginPage()
         {
             InitializeComponent();
         }
@@ -30,10 +30,24 @@ namespace VotingWorkshopManagement
                 MessageBox.Show("Invalid Username!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            //TODO: Password Hashing
             if (user.Password != Password)
             {
                 MessageBox.Show("Invalid Password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            AdminPage.dbContext = dbContext;
+            AdminPage adminPage = new AdminPage();
+            adminPage.Show();
+            this.Hide();
+
+            adminPage.FormClosed += AdminPageClosedHandler;
+        }
+
+        private void AdminPageClosedHandler(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
