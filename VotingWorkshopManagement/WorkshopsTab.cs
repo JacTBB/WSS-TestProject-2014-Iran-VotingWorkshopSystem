@@ -71,6 +71,8 @@ namespace VotingWorkshopManagement
         {
             if (e.RowIndex < 0) return;
 
+            //TODO: This does not check if the button is enabled or not
+            //TODO: Reject
             if (workshopsTable.Columns[e.ColumnIndex].Name == "Approve")
             {
                 var rowData = workshopsTable.Rows[e.RowIndex].DataBoundItem as WorkshopRequestData;
@@ -111,6 +113,8 @@ namespace VotingWorkshopManagement
 
         private void RefreshWorkshopsTableData()
         {
+            workshopRequestsList.Clear();
+
             var statusSortOrder = new List<int> { 3, 1, 2 };
 
             var allWorkshopRequests = dbContext.WorkshopRequests
