@@ -1,9 +1,13 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingWorkshopBackend", "VotingWorkshopBackend\VotingWorkshopBackend.csproj", "{DD80206F-4E16-42E6-AE4D-B3986415F042}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingWorkshopBackend", "VotingWorkshopBackend\VotingWorkshopBackend.csproj", "{DD80206F-4E16-42E6-AE4D-B3986415F042}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingWorkshopManagement", "VotingWorkshopManagement\VotingWorkshopManagement.csproj", "{4D4746BF-06C4-4563-9B73-88B61C2E4394}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingWorkshopTemp", "VotingWorkshopManagement\VotingWorkshopTemp.csproj", "{DB2EFB07-EF06-4411-AF7C-923A644C4A84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{DD80206F-4E16-42E6-AE4D-B3986415F042}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD80206F-4E16-42E6-AE4D-B3986415F042}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD80206F-4E16-42E6-AE4D-B3986415F042}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D4746BF-06C4-4563-9B73-88B61C2E4394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D4746BF-06C4-4563-9B73-88B61C2E4394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D4746BF-06C4-4563-9B73-88B61C2E4394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D4746BF-06C4-4563-9B73-88B61C2E4394}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB2EFB07-EF06-4411-AF7C-923A644C4A84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB2EFB07-EF06-4411-AF7C-923A644C4A84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB2EFB07-EF06-4411-AF7C-923A644C4A84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB2EFB07-EF06-4411-AF7C-923A644C4A84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
