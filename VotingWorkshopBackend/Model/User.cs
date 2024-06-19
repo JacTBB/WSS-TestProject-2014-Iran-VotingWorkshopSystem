@@ -9,13 +9,15 @@ public partial class User
 
     public int UserTypeId { get; set; }
 
-    public string Username { get; set; } = null!;
+    public string Username { get; set; }
 
-    public string Password { get; set; } = null!;
+    public byte[] PasswordHash { get; set; }
 
-    public string? FullName { get; set; }
+    public byte[] PasswordSalt { get; set; }
 
-    public string? Tel { get; set; }
+    public string FullName { get; set; }
+
+    public string Tel { get; set; }
 
     public virtual ICollection<SurveyAnswer> SurveyAnswers { get; set; } = new List<SurveyAnswer>();
 

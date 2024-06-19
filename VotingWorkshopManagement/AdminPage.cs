@@ -20,6 +20,7 @@ namespace VotingWorkshopManagement
             TopLevel = false,
             AutoScroll = true,
             FormBorderStyle = FormBorderStyle.None,
+            Dock = DockStyle.Fill,
         };
 
         Form workshopsTab = new WorkshopsTab(dbContext)
@@ -27,6 +28,7 @@ namespace VotingWorkshopManagement
             TopLevel = false,
             AutoScroll = true,
             FormBorderStyle = FormBorderStyle.None,
+            Dock = DockStyle.Fill,
         };
 
         public AdminPage()

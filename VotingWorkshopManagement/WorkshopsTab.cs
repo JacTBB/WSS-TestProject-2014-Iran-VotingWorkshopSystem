@@ -48,6 +48,12 @@ namespace VotingWorkshopManagement
             approveButtonColumn.UseColumnTextForButtonValue = true;
             workshopsTable.Columns.Add(approveButtonColumn);
 
+            DataGridViewButtonColumn rejectButtonColumn = new DataGridViewButtonColumn();
+            rejectButtonColumn.Name = "Reject";
+            rejectButtonColumn.Text = "Reject";
+            rejectButtonColumn.UseColumnTextForButtonValue = true;
+            workshopsTable.Columns.Add(rejectButtonColumn);
+
             workshopsTable.CellFormatting += new DataGridViewCellFormattingEventHandler(workshopsTable_CellFormatting);
             #endregion
         }
@@ -65,18 +71,28 @@ namespace VotingWorkshopManagement
                     }
                 }
             }
+            if (workshopsTable.Columns[e.ColumnIndex].Name == "Reject" && e.RowIndex >= 0)
+            {
+                var rowData = workshopsTable.Rows[e.RowIndex].DataBoundItem as WorkshopRequestData;
+                if (rowData != null)
+                {
+                    if (rowData.statusId != 3)
+                    {
+                        e.Value = DBNull.Value;
+                    }
+                }
+            }
         }
 
         private void workshopsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
-            //TODO: This does not check if the button is enabled or not
-            //TODO: Reject
             if (workshopsTable.Columns[e.ColumnIndex].Name == "Approve")
             {
                 var rowData = workshopsTable.Rows[e.RowIndex].DataBoundItem as WorkshopRequestData;
                 if (rowData == null) return;
+                if (rowData.statusId != 3) return;
 
                 var workshopRequest = dbContext.WorkshopRequests.FirstOrDefault(r => r.WorkshopRequestId == rowData.WorkshopRequestId);
                 if (workshopRequest == null) return;
@@ -91,6 +107,26 @@ namespace VotingWorkshopManagement
                 workshopsTable.Refresh();
 
                 MessageBox.Show("Approved", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            if (workshopsTable.Columns[e.ColumnIndex].Name == "Reject")
+            {
+                var rowData = workshopsTable.Rows[e.RowIndex].DataBoundItem as WorkshopRequestData;
+                if (rowData == null) return;
+                if (rowData.statusId != 3) return;
+
+                var workshopRequest = dbContext.WorkshopRequests.FirstOrDefault(r => r.WorkshopRequestId == rowData.WorkshopRequestId);
+                if (workshopRequest == null) return;
+
+                workshopRequest.StatusId = 2;
+                dbContext.SaveChanges();
+
+                rowData.statusId = 1;
+                rowData.Status = dbContext.Statuses.First(s => s.StatusId == 1).StatusName;
+                RefreshWorkshopsTableData();
+                workshopsTable.Refresh();
+
+                MessageBox.Show("Rejected", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

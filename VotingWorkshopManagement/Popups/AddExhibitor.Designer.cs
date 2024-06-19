@@ -122,6 +122,8 @@
             // btnCancel
             // 
             btnCancel.BackColor = System.Drawing.Color.LightCoral;
+            btnCancel.FlatAppearance.BorderSize = 0;
+            btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnCancel.Location = new System.Drawing.Point(252, 343);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(129, 63);
@@ -133,6 +135,8 @@
             // btnConfirm
             // 
             btnConfirm.BackColor = System.Drawing.Color.DarkSeaGreen;
+            btnConfirm.FlatAppearance.BorderSize = 0;
+            btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnConfirm.Location = new System.Drawing.Point(424, 343);
             btnConfirm.Name = "btnConfirm";
             btnConfirm.Size = new System.Drawing.Size(129, 63);

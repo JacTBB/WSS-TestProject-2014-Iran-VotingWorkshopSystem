@@ -123,20 +123,12 @@ public partial class VotingWorkshopSystemContext : DbContext
             entity.ToTable("User");
 
             entity.Property(e => e.FullName).HasMaxLength(50);
-            entity.Property(e => e.Password)
-                .IsRequired()
-                .HasMaxLength(50);
             entity.Property(e => e.Tel)
                 .HasMaxLength(10)
                 .IsFixedLength();
             entity.Property(e => e.Username)
                 .IsRequired()
                 .HasMaxLength(50);
-
-            entity.HasOne(d => d.UserType).WithMany(p => p.Users)
-                .HasForeignKey(d => d.UserTypeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_User_UserType");
         });
 
         modelBuilder.Entity<UserType>(entity =>

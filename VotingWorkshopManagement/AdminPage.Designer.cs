@@ -41,6 +41,7 @@
             // 
             // panelNav
             // 
+            panelNav.AutoSize = true;
             panelNav.BackColor = System.Drawing.Color.IndianRed;
             panelNav.Controls.Add(lblTitle);
             panelNav.Controls.Add(btnWorkshops);
@@ -51,7 +52,8 @@
             panelNav.Dock = System.Windows.Forms.DockStyle.Top;
             panelNav.Location = new System.Drawing.Point(0, 0);
             panelNav.Name = "panelNav";
-            panelNav.Size = new System.Drawing.Size(1258, 88);
+            panelNav.Padding = new System.Windows.Forms.Padding(5);
+            panelNav.Size = new System.Drawing.Size(1258, 71);
             panelNav.TabIndex = 1;
             // 
             // lblTitle
@@ -59,7 +61,7 @@
             lblTitle.AutoSize = true;
             lblTitle.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lblTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            lblTitle.Location = new System.Drawing.Point(12, 27);
+            lblTitle.Location = new System.Drawing.Point(23, 19);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new System.Drawing.Size(375, 36);
             lblTitle.TabIndex = 5;
@@ -72,7 +74,7 @@
             btnWorkshops.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnWorkshops.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnWorkshops.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnWorkshops.Location = new System.Drawing.Point(1068, 24);
+            btnWorkshops.Location = new System.Drawing.Point(1071, 16);
             btnWorkshops.Name = "btnWorkshops";
             btnWorkshops.Size = new System.Drawing.Size(156, 47);
             btnWorkshops.TabIndex = 4;
@@ -87,7 +89,7 @@
             btnExhibitors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnExhibitors.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnExhibitors.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnExhibitors.Location = new System.Drawing.Point(923, 24);
+            btnExhibitors.Location = new System.Drawing.Point(926, 16);
             btnExhibitors.Name = "btnExhibitors";
             btnExhibitors.Size = new System.Drawing.Size(139, 47);
             btnExhibitors.TabIndex = 3;
@@ -102,7 +104,7 @@
             btnResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnResults.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnResults.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnResults.Location = new System.Drawing.Point(778, 24);
+            btnResults.Location = new System.Drawing.Point(781, 16);
             btnResults.Name = "btnResults";
             btnResults.Size = new System.Drawing.Size(139, 47);
             btnResults.TabIndex = 2;
@@ -117,7 +119,7 @@
             btnSaloons.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnSaloons.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnSaloons.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnSaloons.Location = new System.Drawing.Point(633, 24);
+            btnSaloons.Location = new System.Drawing.Point(636, 16);
             btnSaloons.Name = "btnSaloons";
             btnSaloons.Size = new System.Drawing.Size(139, 47);
             btnSaloons.TabIndex = 1;
@@ -132,7 +134,7 @@
             btnVoting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnVoting.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnVoting.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnVoting.Location = new System.Drawing.Point(488, 24);
+            btnVoting.Location = new System.Drawing.Point(491, 16);
             btnVoting.Name = "btnVoting";
             btnVoting.Size = new System.Drawing.Size(139, 47);
             btnVoting.TabIndex = 0;
@@ -142,10 +144,11 @@
             // 
             // panelMain
             // 
+            panelMain.AutoSize = true;
             panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            panelMain.Location = new System.Drawing.Point(0, 88);
+            panelMain.Location = new System.Drawing.Point(0, 71);
             panelMain.Name = "panelMain";
-            panelMain.Size = new System.Drawing.Size(1258, 656);
+            panelMain.Size = new System.Drawing.Size(1258, 673);
             panelMain.TabIndex = 2;
             // 
             // AdminPage
@@ -160,6 +163,7 @@
             panelNav.ResumeLayout(false);
             panelNav.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

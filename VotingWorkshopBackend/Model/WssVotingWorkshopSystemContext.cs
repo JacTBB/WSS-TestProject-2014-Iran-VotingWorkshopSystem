@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using VotingWorkshopBackend.Model;
 
 namespace VotingWorkshopBackend.Model;
 
@@ -41,33 +42,45 @@ public partial class WssVotingWorkshopSystemContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.UseCollation("Latin1_General_CI_AS");
+
         modelBuilder.Entity<Category>(entity =>
         {
             entity.ToTable("Category");
 
-            entity.Property(e => e.CategoryName).HasMaxLength(50);
+            entity.Property(e => e.CategoryName)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<Saloon>(entity =>
         {
             entity.ToTable("Saloon");
 
-            entity.Property(e => e.SaloonName).HasMaxLength(50);
+            entity.Property(e => e.SaloonName)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<Status>(entity =>
         {
             entity.ToTable("Status");
 
-            entity.Property(e => e.StatusName).HasMaxLength(50);
+            entity.Property(e => e.StatusName)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<Survey>(entity =>
         {
             entity.ToTable("Survey");
 
-            entity.Property(e => e.Question).HasMaxLength(100);
-            entity.Property(e => e.SurveyName).HasMaxLength(50);
+            entity.Property(e => e.Question)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.SurveyName)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<SurveyAnswer>(entity =>
@@ -96,7 +109,9 @@ public partial class WssVotingWorkshopSystemContext : DbContext
         {
             entity.ToTable("SurveyOption");
 
-            entity.Property(e => e.SurveyOptionName).HasMaxLength(50);
+            entity.Property(e => e.SurveyOptionName)
+                .IsRequired()
+                .HasMaxLength(50);
 
             entity.HasOne(d => d.Survey).WithMany(p => p.SurveyOptions)
                 .HasForeignKey(d => d.SurveyId)
@@ -109,23 +124,21 @@ public partial class WssVotingWorkshopSystemContext : DbContext
             entity.ToTable("User");
 
             entity.Property(e => e.FullName).HasMaxLength(50);
-            entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.Tel)
                 .HasMaxLength(10)
                 .IsFixedLength();
-            entity.Property(e => e.Username).HasMaxLength(50);
-
-            entity.HasOne(d => d.UserType).WithMany(p => p.Users)
-                .HasForeignKey(d => d.UserTypeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_User_UserType");
+            entity.Property(e => e.Username)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<UserType>(entity =>
         {
             entity.ToTable("UserType");
 
-            entity.Property(e => e.UserTypeName).HasMaxLength(50);
+            entity.Property(e => e.UserTypeName)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<WorkshopRequest>(entity =>
@@ -133,6 +146,7 @@ public partial class WssVotingWorkshopSystemContext : DbContext
             entity.ToTable("WorkshopRequest");
 
             entity.Property(e => e.Date).HasColumnType("date");
+            entity.Property(e => e.LastUpdated).HasColumnType("datetime");
 
             entity.HasOne(d => d.Category).WithMany(p => p.WorkshopRequests)
                 .HasForeignKey(d => d.CategoryId)

@@ -55,7 +55,9 @@
             // 
             // btnAddExhibitor
             // 
-            btnAddExhibitor.BackColor = System.Drawing.SystemColors.Info;
+            btnAddExhibitor.BackColor = System.Drawing.Color.SandyBrown;
+            btnAddExhibitor.FlatAppearance.BorderSize = 0;
+            btnAddExhibitor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAddExhibitor.Location = new System.Drawing.Point(1082, 22);
             btnAddExhibitor.Name = "btnAddExhibitor";
             btnAddExhibitor.Size = new System.Drawing.Size(146, 47);
