@@ -24,12 +24,21 @@ namespace VotingWorkshopManagement
             Dock = DockStyle.Fill,
         };
 
+        Form requestTab = new RequestTab(dbContext)
+        {
+            TopLevel = false,
+            AutoScroll = true,
+            FormBorderStyle = FormBorderStyle.None,
+            Dock = DockStyle.Fill,
+        };
+
         public ExhibitorPage(User user)
         {
             InitializeComponent();
             ExhibitorPage.user = user;
 
             panelMain.Controls.Add(homeTab);
+            panelMain.Controls.Add(requestTab);
 
             homeTab.Show();
 
@@ -39,6 +48,7 @@ namespace VotingWorkshopManagement
         private void HideAllTabs()
         {
             homeTab.Hide();
+            requestTab.Hide();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -55,6 +65,7 @@ namespace VotingWorkshopManagement
         private void btnRequest_Click(object sender, EventArgs e)
         {
             HideAllTabs();
+            requestTab.Show();
         }
     }
 }

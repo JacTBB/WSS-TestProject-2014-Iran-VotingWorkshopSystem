@@ -43,6 +43,12 @@ namespace VotingWorkshopManagement
             #endregion
         }
 
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            RefreshWorkshopsTableData();
+            base.OnVisibleChanged(e);
+        }
+
         public void RefreshWorkshopsTableData()
         {
             requestsList.Clear();

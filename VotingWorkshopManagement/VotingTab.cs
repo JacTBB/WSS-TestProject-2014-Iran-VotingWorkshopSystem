@@ -33,6 +33,8 @@ namespace VotingWorkshopManagement
             surveysTable.MultiSelect = false;
             surveysTable.RowHeadersVisible = false;
             surveysTable.Columns["Options"].Width = 200;
+
+            //TODO: Activate/Deactivate column
             #endregion
         }
 
