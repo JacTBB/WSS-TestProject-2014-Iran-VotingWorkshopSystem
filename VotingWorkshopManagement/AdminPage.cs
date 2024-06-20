@@ -15,6 +15,14 @@ namespace VotingWorkshopManagement
     {
         public static VotingWorkshopSystemContext dbContext;
 
+        Form votingTab = new VotingTab(dbContext)
+        {
+            TopLevel = false,
+            AutoScroll = true,
+            FormBorderStyle = FormBorderStyle.None,
+            Dock = DockStyle.Fill,
+        };
+
         Form saloonsTab = new SaloonsTab(dbContext)
         {
             TopLevel = false,
@@ -43,13 +51,17 @@ namespace VotingWorkshopManagement
         {
             InitializeComponent();
 
+            panelMain.Controls.Add(votingTab);
             panelMain.Controls.Add(saloonsTab);
             panelMain.Controls.Add(exhibitorsTab);
             panelMain.Controls.Add(workshopsTab);
+
+            votingTab.Show();
         }
 
         private void HideAllTabs()
         {
+            votingTab.Hide();
             saloonsTab.Hide();
             exhibitorsTab.Hide();
             workshopsTab.Hide();
@@ -58,7 +70,7 @@ namespace VotingWorkshopManagement
         private void btnVoting_Click(object sender, EventArgs e)
         {
             HideAllTabs();
-            //workshopsTab.Show();
+            votingTab.Show();
         }
 
         private void btnSaloons_Click(object sender, EventArgs e)

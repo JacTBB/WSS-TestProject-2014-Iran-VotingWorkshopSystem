@@ -21,7 +21,7 @@ public partial class User
 
     public virtual ICollection<SurveyAnswer> SurveyAnswers { get; set; } = new List<SurveyAnswer>();
 
-    public virtual UserType UserType { get; set; } = null!;
+    public virtual UserType UserType { get; set; }
 
     public virtual ICollection<WorkshopRequest> WorkshopRequests { get; set; } = new List<WorkshopRequest>();
 }

@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace VotingWorkshopManagement.Models;
 
-public partial class VotingWorkshopSystemContext : DbContext
+public partial class WssVotingWorkshopSystemContext : DbContext
 {
-    public VotingWorkshopSystemContext()
+    public WssVotingWorkshopSystemContext()
     {
     }
 
-    public VotingWorkshopSystemContext(DbContextOptions<VotingWorkshopSystemContext> options)
+    public WssVotingWorkshopSystemContext(DbContextOptions<WssVotingWorkshopSystemContext> options)
         : base(options)
     {
     }
@@ -74,6 +74,9 @@ public partial class VotingWorkshopSystemContext : DbContext
         {
             entity.ToTable("Survey");
 
+            entity.Property(e => e.EndDate).HasColumnType("date");
+            entity.Property(e => e.Question).HasMaxLength(100);
+            entity.Property(e => e.StartDate).HasColumnType("date");
             entity.Property(e => e.SurveyName)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -120,12 +123,19 @@ public partial class VotingWorkshopSystemContext : DbContext
             entity.ToTable("User");
 
             entity.Property(e => e.FullName).HasMaxLength(50);
+            entity.Property(e => e.PasswordHash).IsRequired();
+            entity.Property(e => e.PasswordSalt).IsRequired();
             entity.Property(e => e.Tel)
                 .HasMaxLength(10)
                 .IsFixedLength();
             entity.Property(e => e.Username)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            entity.HasOne(d => d.UserType).WithMany(p => p.Users)
+                .HasForeignKey(d => d.UserTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_User_UserType");
         });
 
         modelBuilder.Entity<UserType>(entity =>
