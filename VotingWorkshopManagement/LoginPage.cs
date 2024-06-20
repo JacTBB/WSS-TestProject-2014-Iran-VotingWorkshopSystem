@@ -42,17 +42,32 @@ namespace VotingWorkshopManagement
                 }
             }
 
-            AdminPage.dbContext = dbContext;
-            AdminPage adminPage = new AdminPage();
-            adminPage.Show();
+            CurrentUser.user = user;
+            if (user.UserTypeId == 2)
+            {
+                AdminPage.dbContext = dbContext;
+                AdminPage adminPage = new AdminPage(user);
+                adminPage.Show();
+                adminPage.FormClosed += PageClosedHandler;
+            }
+            if (user.UserTypeId == 1)
+            {
+                ExhibitorPage.dbContext = dbContext;
+                ExhibitorPage exhibitorPage = new ExhibitorPage(user);
+                exhibitorPage.Show();
+                exhibitorPage.FormClosed += PageClosedHandler;
+            }
             this.Hide();
-
-            adminPage.FormClosed += AdminPageClosedHandler;
         }
 
-        private void AdminPageClosedHandler(object sender, EventArgs e)
+        private void PageClosedHandler(object sender, EventArgs e)
         {
             this.Close();
         }
+    }
+
+    public class CurrentUser
+    {
+        public static User user { get; set; }
     }
 }

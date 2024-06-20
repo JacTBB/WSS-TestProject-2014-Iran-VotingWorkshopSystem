@@ -47,7 +47,7 @@ namespace VotingWorkshopManagement
             Dock = DockStyle.Fill,
         };
 
-        public AdminPage()
+        public AdminPage(User user)
         {
             InitializeComponent();
 
@@ -57,6 +57,8 @@ namespace VotingWorkshopManagement
             panelMain.Controls.Add(workshopsTab);
 
             votingTab.Show();
+
+            lblUser.Text = "Hi, "+user.Username;
         }
 
         private void HideAllTabs()
