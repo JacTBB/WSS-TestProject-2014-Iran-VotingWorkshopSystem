@@ -19,6 +19,8 @@ public partial class User
 
     public string Tel { get; set; }
 
+    public DateTime? LastNotified { get; set; }
+
     public virtual ICollection<SurveyAnswer> SurveyAnswers { get; set; } = new List<SurveyAnswer>();
 
     public virtual UserType UserType { get; set; }

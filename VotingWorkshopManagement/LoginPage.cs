@@ -62,7 +62,10 @@ namespace VotingWorkshopManagement
 
         private void PageClosedHandler(object sender, EventArgs e)
         {
-            this.Close();
+            this.Show();
+            CurrentUser.user = null;
+            txtUsername.Text = string.Empty;
+            txtPassword.Text = string.Empty;
         }
     }
 

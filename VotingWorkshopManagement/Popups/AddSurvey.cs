@@ -28,7 +28,8 @@ namespace VotingWorkshopManagement.Popups
             optionsTable.DataSource = optionsList;
             optionsTable.AllowUserToAddRows = true;
 
-            //TODO: Restrict DateTimePicker MinDate
+            dateStart.MinDate = DateTime.Now;
+            dateEnd.MinDate = DateTime.Now;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

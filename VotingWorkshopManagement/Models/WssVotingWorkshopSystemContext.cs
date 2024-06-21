@@ -75,7 +75,9 @@ public partial class WssVotingWorkshopSystemContext : DbContext
             entity.ToTable("Survey");
 
             entity.Property(e => e.EndDate).HasColumnType("date");
-            entity.Property(e => e.Question).HasMaxLength(100);
+            entity.Property(e => e.Question)
+                .IsRequired()
+                .HasMaxLength(100);
             entity.Property(e => e.StartDate).HasColumnType("date");
             entity.Property(e => e.SurveyName)
                 .IsRequired()
@@ -123,6 +125,7 @@ public partial class WssVotingWorkshopSystemContext : DbContext
             entity.ToTable("User");
 
             entity.Property(e => e.FullName).HasMaxLength(50);
+            entity.Property(e => e.LastNotified).HasColumnType("datetime");
             entity.Property(e => e.PasswordHash).IsRequired();
             entity.Property(e => e.PasswordSalt).IsRequired();
             entity.Property(e => e.Tel)

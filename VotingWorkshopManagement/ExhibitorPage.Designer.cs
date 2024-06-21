@@ -35,6 +35,7 @@
             btnVote = new System.Windows.Forms.Button();
             btnHome = new System.Windows.Forms.Button();
             panelMain = new System.Windows.Forms.Panel();
+            btnLogout = new System.Windows.Forms.Button();
             panelNav.SuspendLayout();
             SuspendLayout();
             // 
@@ -42,6 +43,7 @@
             // 
             panelNav.AutoSize = true;
             panelNav.BackColor = System.Drawing.Color.IndianRed;
+            panelNav.Controls.Add(btnLogout);
             panelNav.Controls.Add(lblUser);
             panelNav.Controls.Add(lblTitle);
             panelNav.Controls.Add(btnRequest);
@@ -59,9 +61,9 @@
             lblUser.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             lblUser.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lblUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            lblUser.Location = new System.Drawing.Point(1088, 12);
+            lblUser.Location = new System.Drawing.Point(1000, 19);
             lblUser.Name = "lblUser";
-            lblUser.Size = new System.Drawing.Size(158, 47);
+            lblUser.Size = new System.Drawing.Size(158, 36);
             lblUser.TabIndex = 6;
             lblUser.Text = "Admin";
             lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -131,6 +133,18 @@
             panelMain.Size = new System.Drawing.Size(1258, 676);
             panelMain.TabIndex = 4;
             // 
+            // btnLogout
+            // 
+            btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnLogout.ForeColor = System.Drawing.Color.Snow;
+            btnLogout.Location = new System.Drawing.Point(1170, 19);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new System.Drawing.Size(86, 36);
+            btnLogout.TabIndex = 7;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // ExhibitorPage
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -155,5 +169,6 @@
         private System.Windows.Forms.Button btnVote;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

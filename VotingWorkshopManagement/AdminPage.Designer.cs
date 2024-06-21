@@ -37,6 +37,7 @@
             btnSaloons = new System.Windows.Forms.Button();
             btnVoting = new System.Windows.Forms.Button();
             panelMain = new System.Windows.Forms.Panel();
+            btnLogout = new System.Windows.Forms.Button();
             panelNav.SuspendLayout();
             SuspendLayout();
             // 
@@ -44,6 +45,7 @@
             // 
             panelNav.AutoSize = true;
             panelNav.BackColor = System.Drawing.Color.IndianRed;
+            panelNav.Controls.Add(btnLogout);
             panelNav.Controls.Add(lblUser);
             panelNav.Controls.Add(lblTitle);
             panelNav.Controls.Add(btnWorkshops);
@@ -63,9 +65,9 @@
             lblUser.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             lblUser.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lblUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            lblUser.Location = new System.Drawing.Point(1088, 13);
+            lblUser.Location = new System.Drawing.Point(1049, 19);
             lblUser.Name = "lblUser";
-            lblUser.Size = new System.Drawing.Size(158, 47);
+            lblUser.Size = new System.Drawing.Size(114, 36);
             lblUser.TabIndex = 6;
             lblUser.Text = "Admin";
             lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -88,7 +90,7 @@
             btnWorkshops.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnWorkshops.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnWorkshops.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnWorkshops.Location = new System.Drawing.Point(930, 13);
+            btnWorkshops.Location = new System.Drawing.Point(913, 13);
             btnWorkshops.Name = "btnWorkshops";
             btnWorkshops.Size = new System.Drawing.Size(130, 47);
             btnWorkshops.TabIndex = 4;
@@ -103,7 +105,7 @@
             btnExhibitors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnExhibitors.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnExhibitors.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnExhibitors.Location = new System.Drawing.Point(804, 13);
+            btnExhibitors.Location = new System.Drawing.Point(787, 13);
             btnExhibitors.Name = "btnExhibitors";
             btnExhibitors.Size = new System.Drawing.Size(120, 47);
             btnExhibitors.TabIndex = 3;
@@ -118,7 +120,7 @@
             btnResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnResults.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnResults.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnResults.Location = new System.Drawing.Point(678, 13);
+            btnResults.Location = new System.Drawing.Point(661, 13);
             btnResults.Name = "btnResults";
             btnResults.Size = new System.Drawing.Size(120, 47);
             btnResults.TabIndex = 2;
@@ -133,7 +135,7 @@
             btnSaloons.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnSaloons.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnSaloons.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnSaloons.Location = new System.Drawing.Point(552, 13);
+            btnSaloons.Location = new System.Drawing.Point(535, 13);
             btnSaloons.Name = "btnSaloons";
             btnSaloons.Size = new System.Drawing.Size(120, 47);
             btnSaloons.TabIndex = 1;
@@ -148,7 +150,7 @@
             btnVoting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnVoting.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnVoting.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnVoting.Location = new System.Drawing.Point(426, 13);
+            btnVoting.Location = new System.Drawing.Point(409, 13);
             btnVoting.Name = "btnVoting";
             btnVoting.Size = new System.Drawing.Size(120, 47);
             btnVoting.TabIndex = 0;
@@ -164,6 +166,18 @@
             panelMain.Name = "panelMain";
             panelMain.Size = new System.Drawing.Size(1258, 676);
             panelMain.TabIndex = 2;
+            // 
+            // btnLogout
+            // 
+            btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnLogout.ForeColor = System.Drawing.Color.Snow;
+            btnLogout.Location = new System.Drawing.Point(1170, 19);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new System.Drawing.Size(81, 36);
+            btnLogout.TabIndex = 8;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // AdminPage
             // 
@@ -190,5 +204,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

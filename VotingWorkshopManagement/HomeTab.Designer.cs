@@ -31,10 +31,10 @@
             lblTitle = new System.Windows.Forms.Label();
             requestsTable = new System.Windows.Forms.DataGridView();
             lblRequests = new System.Windows.Forms.Label();
-            NotificationsTable = new System.Windows.Forms.DataGridView();
+            notificationsTable = new System.Windows.Forms.DataGridView();
             lblNotifications = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)requestsTable).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)NotificationsTable).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)notificationsTable).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -66,15 +66,15 @@
             lblRequests.TabIndex = 2;
             lblRequests.Text = "My Requests";
             // 
-            // NotificationsTable
+            // notificationsTable
             // 
-            NotificationsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            NotificationsTable.Location = new System.Drawing.Point(48, 138);
-            NotificationsTable.Name = "NotificationsTable";
-            NotificationsTable.RowHeadersWidth = 62;
-            NotificationsTable.RowTemplate.Height = 33;
-            NotificationsTable.Size = new System.Drawing.Size(553, 473);
-            NotificationsTable.TabIndex = 3;
+            notificationsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            notificationsTable.Location = new System.Drawing.Point(48, 138);
+            notificationsTable.Name = "notificationsTable";
+            notificationsTable.RowHeadersWidth = 62;
+            notificationsTable.RowTemplate.Height = 33;
+            notificationsTable.Size = new System.Drawing.Size(553, 473);
+            notificationsTable.TabIndex = 3;
             // 
             // lblNotifications
             // 
@@ -92,14 +92,14 @@
             BackColor = System.Drawing.SystemColors.Control;
             ClientSize = new System.Drawing.Size(1258, 644);
             Controls.Add(lblNotifications);
-            Controls.Add(NotificationsTable);
+            Controls.Add(notificationsTable);
             Controls.Add(lblRequests);
             Controls.Add(requestsTable);
             Controls.Add(lblTitle);
             Name = "HomeTab";
             Text = "HomeTab";
             ((System.ComponentModel.ISupportInitialize)requestsTable).EndInit();
-            ((System.ComponentModel.ISupportInitialize)NotificationsTable).EndInit();
+            ((System.ComponentModel.ISupportInitialize)notificationsTable).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -109,7 +109,7 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DataGridView requestsTable;
         private System.Windows.Forms.Label lblRequests;
-        private System.Windows.Forms.DataGridView NotificationsTable;
+        private System.Windows.Forms.DataGridView notificationsTable;
         private System.Windows.Forms.Label lblNotifications;
     }
 }

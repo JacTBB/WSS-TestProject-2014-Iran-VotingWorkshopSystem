@@ -31,6 +31,14 @@ namespace VotingWorkshopManagement
             Dock = DockStyle.Fill,
         };
 
+        Form resultstab = new ResultsTab(dbContext)
+        {
+            TopLevel = false,
+            AutoScroll = true,
+            FormBorderStyle = FormBorderStyle.None,
+            Dock = DockStyle.Fill,
+        };
+
         Form exhibitorsTab = new ExhibitorsTab(dbContext)
         {
             TopLevel = false,
@@ -53,18 +61,20 @@ namespace VotingWorkshopManagement
 
             panelMain.Controls.Add(votingTab);
             panelMain.Controls.Add(saloonsTab);
+            panelMain.Controls.Add(resultstab);
             panelMain.Controls.Add(exhibitorsTab);
             panelMain.Controls.Add(workshopsTab);
 
             votingTab.Show();
 
-            lblUser.Text = "Hi, "+user.Username;
+            lblUser.Text = "Hi, " + user.Username;
         }
 
         private void HideAllTabs()
         {
             votingTab.Hide();
             saloonsTab.Hide();
+            resultstab.Hide();
             exhibitorsTab.Hide();
             workshopsTab.Hide();
         }
@@ -84,7 +94,7 @@ namespace VotingWorkshopManagement
         private void btnResults_Click(object sender, EventArgs e)
         {
             HideAllTabs();
-            //workshopsTab.Show();
+            resultstab.Show();
         }
 
         private void btnExhibitors_Click(object sender, EventArgs e)
@@ -97,6 +107,11 @@ namespace VotingWorkshopManagement
         {
             HideAllTabs();
             workshopsTab.Show();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

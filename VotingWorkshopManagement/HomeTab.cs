@@ -17,6 +17,7 @@ namespace VotingWorkshopManagement
     {
         public static VotingWorkshopSystemContext dbContext;
         public BindingList<WorkshopRequestData> requestsList = new BindingList<WorkshopRequestData>();
+        public BindingList<WorkshopRequestData> notificationsList = new BindingList<WorkshopRequestData>();
 
         public HomeTab(VotingWorkshopSystemContext dbContext)
         {
@@ -37,9 +38,26 @@ namespace VotingWorkshopManagement
             requestsTable.Columns["WorkshopTimeslotId"].Visible = false;
             requestsTable.Columns["StatusId"].Visible = false;
             requestsTable.Columns["User"].Visible = false;
+            requestsTable.Columns["LastUpdated"].Visible = false;
 
             requestsTable.Columns["WorkshopTimeslot"].HeaderText = "Workshop Timeslot";
             requestsTable.Columns["WorkshopTimeslot"].Width = 120;
+            #endregion
+
+            #region Configure NotificationsTable
+            notificationsTable.DataSource = notificationsList;
+            notificationsTable.AllowUserToAddRows = false;
+            notificationsTable.MultiSelect = false;
+            notificationsTable.RowHeadersVisible = false;
+            notificationsTable.Columns["WorkshopRequestId"].Visible = false;
+            notificationsTable.Columns["UserId"].Visible = false;
+            notificationsTable.Columns["SaloonId"].Visible = false;
+            notificationsTable.Columns["CategoryId"].Visible = false;
+            notificationsTable.Columns["WorkshopTimeslotId"].Visible = false;
+            notificationsTable.Columns["StatusId"].Visible = false;
+            notificationsTable.Columns["User"].Visible = false;
+            notificationsTable.Columns["Category"].Visible = false;
+            notificationsTable.Columns["WorkshopTimeslot"].Visible = false;
             #endregion
         }
 
@@ -52,6 +70,16 @@ namespace VotingWorkshopManagement
         public void RefreshWorkshopsTableData()
         {
             requestsList.Clear();
+            notificationsList.Clear();
+
+            var LastNotified = CurrentUser.user.LastNotified;
+            if (LastNotified == null)
+            {
+                LastNotified = DateTime.Now;
+            }
+
+            CurrentUser.user.LastNotified = DateTime.Now;
+            dbContext.SaveChanges();
 
             var statusSortOrder = new List<int> { 3, 1, 2 };
 
@@ -69,7 +97,7 @@ namespace VotingWorkshopManagement
 
             foreach (var workshopRequest in allWorkshopRequests)
             {
-                requestsList.Add(new WorkshopRequestData
+                var data = new WorkshopRequestData
                 {
                     WorkshopRequestId = workshopRequest.WorkshopRequestId,
                     UserId = workshopRequest.UserId,
@@ -78,16 +106,25 @@ namespace VotingWorkshopManagement
                     WorkshopTimeslotId = workshopRequest.WorkshopTimeslotId,
                     statusId = workshopRequest.StatusId,
                     Date = workshopRequest.Date,
+                    LastUpdated = workshopRequest.LastUpdated,
 
                     User = workshopRequest.User.Username,
                     Saloon = workshopRequest.Saloon.SaloonName,
                     Category = workshopRequest.Category.CategoryName,
                     WorkshopTimeslot = $"{workshopRequest.WorkshopTimeslot.StartTime} - {workshopRequest.WorkshopTimeslot.EndTime}",
                     Status = workshopRequest.Status.StatusName,
-                });
+                };
+
+                requestsList.Add(data);   
+
+                if (data.LastUpdated > LastNotified)
+                {
+                    notificationsList.Add(data);
+                }
             }
 
             requestsTable.Refresh();
+            notificationsTable.Refresh();
         }
 
         public class WorkshopRequestData
@@ -99,6 +136,7 @@ namespace VotingWorkshopManagement
             public int WorkshopTimeslotId { get; set; }
             public int statusId { get; set; }
             public DateTime Date { get; set; }
+            public DateTime LastUpdated { get; set; }
 
             public string User { get; set; }
             public string Saloon { get; set; }
