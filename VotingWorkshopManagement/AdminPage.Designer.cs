@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelNav = new System.Windows.Forms.Panel();
+            btnLogout = new System.Windows.Forms.Button();
             lblUser = new System.Windows.Forms.Label();
             lblTitle = new System.Windows.Forms.Label();
             btnWorkshops = new System.Windows.Forms.Button();
@@ -37,7 +38,6 @@
             btnSaloons = new System.Windows.Forms.Button();
             btnVoting = new System.Windows.Forms.Button();
             panelMain = new System.Windows.Forms.Panel();
-            btnLogout = new System.Windows.Forms.Button();
             panelNav.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,6 +59,19 @@
             panelNav.Padding = new System.Windows.Forms.Padding(5);
             panelNav.Size = new System.Drawing.Size(1258, 68);
             panelNav.TabIndex = 1;
+            // 
+            // btnLogout
+            // 
+            btnLogout.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnLogout.ForeColor = System.Drawing.Color.Snow;
+            btnLogout.Location = new System.Drawing.Point(1170, 19);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new System.Drawing.Size(81, 36);
+            btnLogout.TabIndex = 8;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // lblUser
             // 
@@ -166,18 +179,6 @@
             panelMain.Name = "panelMain";
             panelMain.Size = new System.Drawing.Size(1258, 676);
             panelMain.TabIndex = 2;
-            // 
-            // btnLogout
-            // 
-            btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnLogout.ForeColor = System.Drawing.Color.Snow;
-            btnLogout.Location = new System.Drawing.Point(1170, 19);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new System.Drawing.Size(81, 36);
-            btnLogout.TabIndex = 8;
-            btnLogout.Text = "Logout";
-            btnLogout.UseVisualStyleBackColor = true;
-            btnLogout.Click += btnLogout_Click;
             // 
             // AdminPage
             // 

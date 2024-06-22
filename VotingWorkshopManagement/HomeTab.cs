@@ -78,9 +78,6 @@ namespace VotingWorkshopManagement
                 LastNotified = DateTime.Now;
             }
 
-            CurrentUser.user.LastNotified = DateTime.Now;
-            dbContext.SaveChanges();
-
             var statusSortOrder = new List<int> { 3, 1, 2 };
 
             var allWorkshopRequests = dbContext.WorkshopRequests
@@ -117,7 +114,7 @@ namespace VotingWorkshopManagement
 
                 requestsList.Add(data);   
 
-                if (data.LastUpdated > LastNotified)
+                if (data.LastUpdated >= LastNotified.Value)
                 {
                     notificationsList.Add(data);
                 }
@@ -125,6 +122,9 @@ namespace VotingWorkshopManagement
 
             requestsTable.Refresh();
             notificationsTable.Refresh();
+
+            CurrentUser.user.LastNotified = DateTime.Now;
+            dbContext.SaveChanges();
         }
 
         public class WorkshopRequestData

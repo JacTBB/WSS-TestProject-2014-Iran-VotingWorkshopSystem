@@ -99,6 +99,7 @@ namespace VotingWorkshopManagement
 
                 //TODO: Reject other requests for same date, time, saloon, user
                 workshopRequest.StatusId = 1;
+                workshopRequest.LastUpdated = DateTime.Now;
                 dbContext.SaveChanges();
 
                 rowData.statusId = 1;
@@ -119,6 +120,7 @@ namespace VotingWorkshopManagement
                 if (workshopRequest == null) return;
 
                 workshopRequest.StatusId = 2;
+                workshopRequest.LastUpdated = DateTime.Now;
                 dbContext.SaveChanges();
 
                 rowData.statusId = 1;
